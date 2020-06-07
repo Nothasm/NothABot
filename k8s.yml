@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nothabot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nothabot
+  template:
+    metadata:
+      labels:
+        app: nothabot
+    spec:
+      containers:
+      - image: registry.cloud.okteto.net/nothasm/nothabot:latest
+        command:
+          - npm
+          - run
+          - start
+        name: nothabot
+        resources:
+          limits:
+            cpu: 1
+            memory: 1.5Gi

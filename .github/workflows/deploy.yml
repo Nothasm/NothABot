@@ -1,0 +1,33 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+  build-dev:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@master
+
+    - name: "Okteto Login"
+      uses: okteto/actions/login@master
+      with:
+        token: ${{ secrets.OKTETO_TOKEN }}
+
+    - name: "Activate Namespace"
+      uses: okteto/actions/namespace@master
+      with:
+        namespace: nothasm
+
+    - name: "Build"
+      uses: okteto/actions/build@master
+      with:
+        tag: registry.cloud.okteto.net/nothasm/nothabot:${{ github.sha }}
+
+    - name: "Deploy"
+      uses: okteto/actions/deploy@master
+      with:
+        namespace: nothasm
+        manifest: k8s.yml
+        tag: registry.cloud.okteto.net/nothasm/nothabot:${{ github.sha }}
+        waitOn: deployment/nothabot
