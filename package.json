@@ -1,0 +1,27 @@
+{
+  "name": "nothabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-modules index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nothasm/NothABot.git"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nothasm/NothABot/issues"
+  },
+  "homepage": "https://github.com/Nothasm/NothABot#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "jshint": "^2.11.1",
+    "lyricist": "^2.2.2"
+  }
+}
